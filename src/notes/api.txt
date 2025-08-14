@@ -37,6 +37,13 @@ Example : Authorization details
   when()- it submits the API by taking resource and http method type like POST
   then()- validates the response with methods like assertThat(), header(), body()
 
+- Extract response as string: String response= .then().extract().response().asString();
+
+- To Parse extracted response as JSON: JsonPath class. his class takes a string nput and converts it into Json.
+  String response= .then().extract().response().asString();
+  JsonPath js= new JsonPath(response);
+  String placeId= js.getString("place_id"); 
+
 
 
 
