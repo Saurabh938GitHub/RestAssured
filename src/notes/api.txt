@@ -39,10 +39,13 @@ Example : Authorization details
 
 - Extract response as string: String response= .then().extract().response().asString();
 
-- To Parse extracted response as JSON: JsonPath class. his class takes a string nput and converts it into Json.
+- To Parse extracted response as JSON: JsonPath class. his class takes a string input and converts it into Json.
   String response= .then().extract().response().asString();
   JsonPath js= new JsonPath(response);
   String placeId= js.getString("place_id"); 
+
+- .body(new String(Files.readAllBytes(Paths.get("C:\\Users\add.json"))))
+  this is a way of providing body stored in a file add.json at a place in system where 'Files.readAllBytes' method  takes the path in form of Path class and reads it in bytes and then that is converted into string using new String()
 
 
 
