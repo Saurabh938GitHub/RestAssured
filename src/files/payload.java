@@ -92,4 +92,26 @@ public class payload {
 				+ "} ";
 		return payload;
 	}
+	
+	public static String CreateBug(String key, String summary) {
+		String payload="{\r\n"
+				+ "    \"fields\": {\r\n"
+				+ "       \"project\":\r\n"
+				+ "       {\r\n"
+				+ "          \"key\": \""+key+"\"\r\n"
+				+ "       },\r\n"
+				+ "       \"summary\": \""+summary+"\",\r\n"
+				+ "       \"issuetype\": {\r\n"
+				+ "          \"name\": \"Bug\"\r\n"
+				+ "       }\r\n"
+				+ "   }\r\n"
+				+ "}";
+		return payload;
+	}
+	
+	public static String BearerTokenForBasicAuth() {
+		String token="Basic OTM4c2F1cmF2QGdtYWlsLmNvbTpBVEFUVDN4RmZHRjBwWUJmVWhkTnRuQUgtazNXdDlyYzZReXd0d1BNZVZVcUttRW9jUHd4a2RvVDc5N0N3cmxXUUdvVVl6RjFadmdkMWJsa01Yei16Uk14MkRIb0dhdmtKMTRTa1hFY3JjNEdTUUVxN2x2SGJkdHBOZnNSTTZRSTBTSUF1SDNlOF9BN3pmUDYySVJCUjViYWFCVG9ObmI1clROUUNMb3dJMlN6eUM0bjl0bXowUEU9QzZDRDM2RkY=";
+		return token;
+	}
+	
 }

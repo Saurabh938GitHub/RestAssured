@@ -47,6 +47,16 @@ Example : Authorization details
 - .body(new String(Files.readAllBytes(Paths.get("C:\\Users\add.json"))))
   this is a way of providing body stored in a file add.json at a place in system where 'Files.readAllBytes' method  takes the path in form of Path class and reads it in bytes and then that is converted into string using new String()
 
+- my jira auth token: ATATT3xFfGF0pYBfUhdNtnAH-k3Wt9rc6QywtwPMeVUqKmEocPwxkdoT797CwrlWQGoUYzF1Zvgd1blkMXz-zRMx2DHoGavkJ14SkXEcrc4GSQEq7lvHbdtpNfsRM6QI0SIAuH3e8_A7zfP62IRBR5baaBToNnb5rTNQCLowI2SzyC4n9tmz0PE=C6CD36FF
+
+OTM4c2F1cmF2QGdtYWlsLmNvbTpBVEFUVDN4RmZHRjBwWUJmVWhkTnRuQUgtazNXdDlyYzZReXd0d1BNZVZVcUttRW9jUHd4a2RvVDc5N0N3cmxXUUdvVVl6RjFadmdkMWJsa01Yei16Uk14MkRIb0dhdmtKMTRTa1hFY3JjNEdTUUVxN2x2SGJkdHBOZnNSTTZRSTBTSUF1SDNlOF9BN3pmUDYySVJCUjViYWFCVG9ObmI1clROUUNMb3dJMlN6eUM0bjl0bXowUEU9QzZDRDM2RkY=
+
+- Basic auth: authentication using bearer-token in BASE64 encoding. User needs to generate a bearer token for authenticating. It is done under header named Authorization.
+
+-- when user wants to add any attachment/file, then use 'form-data' parameter of body with key as File 
+   when user wants to add some generic text, use 'raw' parameter of body
+   for automation, .multiPart() for attachment and .body() for generic text
+
 
 
 
