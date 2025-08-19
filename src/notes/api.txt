@@ -57,6 +57,12 @@ OTM4c2F1cmF2QGdtYWlsLmNvbTpBVEFUVDN4RmZHRjBwWUJmVWhkTnRuQUgtazNXdDlyYzZReXd0d1BN
    when user wants to add some generic text, use 'raw' parameter of body
    for automation, .multiPart() for attachment and .body() for generic text
 
+-- O-Auth: internal server apis communication. here the internal apis secured with o-auth authorisation will need access token to get unlocked. that access token is provided by access/authorization server which first needs to verify whether relevant user/party is asking for access token or not. if not, it will deny, if yes, access token will be shared. this verification is done through grant type process. there are two grant type processes: client credential grant type and password grant type. Once access token is given using verification of these grant types, that access token can be user to hit and get response from apis secured with o-auth authorisation.
+client credential grant type: client id , client secret (generally passed through form-data parameters in postman and .formParams() in rest assured)
+password grant type: username, password
+
+
+
 
 
 
