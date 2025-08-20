@@ -45,6 +45,8 @@ public class ClientCredentialsOAuthTest {
 		System.out.println("secondCoursePrice:"+secondCoursePrice);
 		System.out.println("firstApiCourseTitle:"+firstApiCourseTitle);
 		
+		System.out.println(response1);
+		
 	}
 
 }

@@ -61,6 +61,17 @@ OTM4c2F1cmF2QGdtYWlsLmNvbTpBVEFUVDN4RmZHRjBwWUJmVWhkTnRuQUgtazNXdDlyYzZReXd0d1BN
 client credential grant type: client id , client secret (generally passed through form-data parameters in postman and .formParams() in rest assured)
 password grant type: username, password
 
+-- Serialization in Rest Assured is a process of converting a Java object into Request body(payload)
+   De-serialization is a process of converting response body back to java object
+   This can be achieved through POJO classes (Plain Object Java Classes) using getters(for de-serialization) and     setters(for serialization) methods.
+For Serialization/De-serialization using Json: Jackson library is required
+For Serialization/De-serialization using XML: JAXB library is required
+
+-- De-serialization code: GetCourse gc= given().queryParam("access_token", access_token)
+				.when().get("oauthapi/getCourseDetails")
+				.then().assertThat().statusCode(401).extract().response().as(GetCourse.class);
+   here GetCourse is the POJO class and .as() method is used to extract response as an object of GetCourse class (java object)
+
 
 
 
