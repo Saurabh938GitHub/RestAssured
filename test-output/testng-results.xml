@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-18T19:25:31 IST" name="Default suite" finished-at="2025-08-18T19:25:36 IST" duration-ms="4978">
+  <suite started-at="2025-08-21T23:59:27 IST" name="Default suite" finished-at="2025-08-21T23:59:32 IST" duration-ms="5090">
     <groups>
     </groups>
-    <test started-at="2025-08-18T19:25:31 IST" name="Default test" finished-at="2025-08-18T19:25:36 IST" duration-ms="4978">
-      <class name="files.CreateBugAndAddAttachment">
-        <test-method signature="createBug()[pri:0, instance:files.CreateBugAndAddAttachment@6221a451]" started-at="2025-08-18T19:25:31 IST" name="createBug" finished-at="2025-08-18T19:25:36 IST" duration-ms="4949" status="PASS">
+    <test started-at="2025-08-21T23:59:27 IST" name="Default test" finished-at="2025-08-21T23:59:32 IST" duration-ms="5090">
+      <class name="files.SerializationDeSerializaionTest">
+        <test-method signature="testing(double,double,java.lang.String,int)[pri:0, instance:files.SerializationDeSerializaionTest@d86a6f]" started-at="2025-08-21T23:59:27 IST" name="testing" data-provider="BooksData" finished-at="2025-08-21T23:59:30 IST" duration-ms="3501" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-38.383494]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[33.427362]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Frontline house1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[38]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createBug -->
-      </class> <!-- files.CreateBugAndAddAttachment -->
+        </test-method> <!-- testing -->
+        <test-method signature="testing(double,double,java.lang.String,int)[pri:0, instance:files.SerializationDeSerializaionTest@d86a6f]" started-at="2025-08-21T23:59:30 IST" name="testing" data-provider="BooksData" finished-at="2025-08-21T23:59:32 IST" duration-ms="1551" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-50.383494]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[55.427362]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Frontline house2]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[50]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testing -->
+      </class> <!-- files.SerializationDeSerializaionTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

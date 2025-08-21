@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import org.testng.Assert;
 
-public class ClientCredentialsOAuthTestSerializationDeSerialization {
+public class ClientCredentialsOAuthTestDeSerialization {
 
 	public static void main(String[] args) {
 
