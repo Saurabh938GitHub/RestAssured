@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="files.CreateBugAndAddAttachment">
+      <class name="files.SerializationDeSerializaionTest">
         <methods>
-          <include name="createBug"/>
+          <include name="testing" invocation-numbers="0 1"/>
         </methods>
-      </class> <!-- files.CreateBugAndAddAttachment -->
+      </class> <!-- files.SerializationDeSerializaionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

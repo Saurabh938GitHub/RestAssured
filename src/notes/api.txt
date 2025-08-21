@@ -72,6 +72,10 @@ For Serialization/De-serialization using XML: JAXB library is required
 				.then().assertThat().statusCode(401).extract().response().as(GetCourse.class);
    here GetCourse is the POJO class and .as() method is used to extract response as an object of GetCourse class (java object)
 
+-- Serialization code: SetAddAddressApiBody setAdd= new SetAddAddressApiBody();
+String response= given().log().all().header("Content-Type", "application/json").queryParam("key", "qaclick123").body(setAdd).when().post("maps/api/place/add/json").then().log().all().assertThat().statusCode(200).extract().response().asString();
+   here SetAddAddressApiBody is the POJO class and .body(setAdd) method is used to pass an object of SetAddAddressApiBody class (java object) as request body/payload.
+
 
 
 
