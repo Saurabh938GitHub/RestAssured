@@ -77,6 +77,23 @@ String response= given().log().all().header("Content-Type", "application/json").
    here SetAddAddressApiBody is the POJO class and .body(setAdd) method is used to pass an object of SetAddAddressApiBody class (java object) as request body/payload.
 
 
+-- RequestSpecBuilder: This class is used to write common part in Rest Request and can be used for avoiding to write common parts of API request multiple times.
+RequestSpecification req=new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com/")
+		.addQueryParam("key", "qaclick123")
+		.setContentType(ContentType.JSON).build();
+		
+RequestSpecification req1= given().spec(req);
+
+-- ResponseSpecBuilder: This class is used to write common part in Rest Response and can be used for avoiding to write common parts of API response multiple times.
+ResponseSpecification res= new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+Response response= req1.body(payload.AddPlace())
+		 .when().post("maps/api/place/add/json");
+		
+String responseToString= response.then().spec(res).body("scope", equalTo("APP"))
+.header("Server", "Apache/2.4.52 (Ubuntu)").extract().response().asString();
+
+
+
 
 
 
