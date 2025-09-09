@@ -109,6 +109,53 @@ public class payload {
 		return payload;
 	}
 	
+	public static String UpdateBugLabels(String toAdd, String toRemove) {
+		String payload="{\r\n"
+				+ "  \"update\": {\r\n"
+				+ "    \"labels\": [\r\n"
+				+ "      {\r\n"
+				+ "        \"add\": \""+toAdd+"\"\r\n"
+				+ "      },\r\n"
+				+ "      {\r\n"
+				+ "        \"remove\": \""+toRemove+"\"\r\n"
+				+ "      }\r\n"
+				+ "    ]\r\n"
+				+ "  }\r\n"
+				+ "}";
+		return payload;
+	}
+	
+	public static String UpdateStatusOfBug(String transitionId) {
+		String payload="{\"transition\": {\"id\": \"" + transitionId + "\"}}";
+		return payload;
+	}
+	
+	public static String UpdateAssigneeOfBug(String assigneeId) {
+		String payload="{\"accountId\": \"" + assigneeId +"\"}";
+		return payload;
+	}
+	
+	public static String AddCommentInBug(String comment) {
+		String payload="{\r\n"
+				+ "  \"body\": {\r\n"
+				+ "    \"version\": 1,\r\n"
+				+ "    \"type\": \"doc\",\r\n"
+				+ "    \"content\": [\r\n"
+				+ "      {\r\n"
+				+ "        \"type\": \"paragraph\",\r\n"
+				+ "        \"content\": [\r\n"
+				+ "          {\r\n"
+				+ "            \"type\": \"text\",\r\n"
+				+ "            \"text\": \""+comment+"\"\r\n"
+				+ "          }\r\n"
+				+ "        ]\r\n"
+				+ "      }\r\n"
+				+ "    ]\r\n"
+				+ "  }\r\n"
+				+ "}";
+		return payload;
+	}
+	
 	public static String BearerTokenForBasicAuth() {
 		String token="Basic OTM4c2F1cmF2QGdtYWlsLmNvbTpBVEFUVDN4RmZHRjBwWUJmVWhkTnRuQUgtazNXdDlyYzZReXd0d1BNZVZVcUttRW9jUHd4a2RvVDc5N0N3cmxXUUdvVVl6RjFadmdkMWJsa01Yei16Uk14MkRIb0dhdmtKMTRTa1hFY3JjNEdTUUVxN2x2SGJkdHBOZnNSTTZRSTBTSUF1SDNlOF9BN3pmUDYySVJCUjViYWFCVG9ObmI1clROUUNMb3dJMlN6eUM0bjl0bXowUEU9QzZDRDM2RkY=";
 		return token;
