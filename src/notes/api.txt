@@ -62,9 +62,14 @@ In Postman: Authorization Tab- Select Auth Type as Basic Auth - provide Username
    when user wants to add some generic text, use 'raw' parameter of body
    for automation, .multiPart() for attachment and .body() for generic text
 
--- O-Auth: internal server apis communication. here the internal apis secured with o-auth authorisation will need access token to get unlocked. that access token is provided by access/authorization server which first needs to verify whether relevant user/party is asking for access token or not. if not, it will deny, if yes, access token will be shared. this verification is done through grant type process. there are two grant type processes: client credential grant type and password grant type. Once access token is given using verification of these grant types, that access token can be user to hit (generally as Query Parament under Params on postman) and get response from apis secured with o-auth authorisation.
-client credential grant type: client_id , client_secret, grant_type (generally passed through body/form-data parameters in postman and .formParams() in rest assured)
-password grant type: username, password
+-- O-Auth: internal server apis communication. here the internal apis secured with o-auth authorisation will need access token to get unlocked. that access token is provided by access/authorization server which first needs to verify whether relevant user/party is asking for access token or not. if not, it will deny, if yes, access token will be shared. this verification is done through grant type process. there are two grant type processes: client credential grant type and password grant type. Once access token is given using verification of these grant types, that access token can be user to hit and get response from apis secured with o-auth authorisation.
+1. client credentials grant type: 
+Postman: Authorization Tab- Select Auth Type as OAuth2.0 and provide Grant type as Client Credentials, Access Token URL (endpoint to get access token), Client Id, Client Secret, Scope and Client Authentication (as Send as Basic auth header) Rest Assured: .formParams("client_id", "").formParams("client_secret", "").formParams("grant_type","client_credentials")
+.formParam("scope", "trust") and through this we can get access token which can be then used in another api request
+2. password credentials grant type: 
+Postman: Authorization Tab- Select Auth Type as OAuth2.0 and provide Grant type as Password Credentials, Access Token URL (endpoint to get access token), Client Id, Client Secret, Username, Password, Scope and Client Authentication (as Send as Basic auth header)
+Rest Assured: .formParams("client_id", "").formParams("client_secret", "").formParams("grant_type","password").formParams("username","").formParams("password","")
+.formParam("scope", "trust") and through this we can get access token which can be then used in another api request
 
 -- Serialization in Rest Assured is a process of converting a Java object into Request body(payload)
    De-serialization is a process of converting response body back to java object
