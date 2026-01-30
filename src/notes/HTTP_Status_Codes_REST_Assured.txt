@@ -1,0 +1,109 @@
+HTTP STATUS CODES – WHEN THEY OCCUR & HOW TO HANDLE (REST ASSURED + AUTOMATION)
+
+200 OK
+When: Successful GET/PUT/PATCH request
+Handle: Assert status and validate response body
+
+201 Created
+When: Resource created via POST (sometimes PUT as well if PUT creates new resource)
+Handle: Assert status and capture resource ID
+
+202 Accepted
+When: The request is valid and accepted (generally POST and PUT), but processing has NOT finished yet, 202 ≠ success completion (File upload processing, report generation)
+Handle: Poll status endpoint by adding timeout and max retry count and then in last asserting 200.
+
+204 No Content
+When: no response body, Successful DELETE/PUT/PATCH
+Handle: Assert status only
+
+205 Reset Content
+When: The server successfully processed the request (mostly POST or PUT), no response body is generated
+and instructs the client to reset the view/form such as form submission
+Handle: Reset UI state if applicable
+
+206 Partial Content
+When: The server returns only part of the requested resource (pagination/range requests), mostly GET
+Handle: Validate partial data and headers
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+301 Moved Permanently
+When: Endpoint permanently changed (mostly GET)
+Handle: Update endpoint and validate Location header
+
+302 Found
+When: The resource is temporarily available at a different URL. (commonly auth flows) (mostly GET and POST)
+Handle: Follow redirect (or let Client/Rest Assured do it automatically, meaning, Received 302 Found-> Client Reads the Location header-> Automatically send a new request to that URL-> Return the final response to you (You don’t have to do anything unless you want to assert the 302 itself.)
+
+307 Temporary Redirect
+When: Temporary Redirect is used mainly to redirect requests without changing the HTTP method or losing the request body. (mostly POST/PUT/PATCH)
+Handle: Ensure same method is retained
+
+Note: 302 and 307 are both temporary redirects; the key difference is that 307 guarantees the HTTP method and request body are preserved. In REST Assured, both are automatically followed by default, so we can simply assert the final response unless we specifically need to validate the redirect.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+400 Bad Request
+When: Invalid payload or missing fields (any HTTP method but mostly with POST/PUT/PATCH)
+Handle: Validate error message
+
+401 Unauthorized
+When: Missing or expired authentication (any HTTP method because authentication is independent of the request type)
+Handle: Regenerate token and retry
+
+403 Forbidden
+When: Authenticated but no permission (any HTTP method)
+Handle: do not retry, use correct role-based access
+
+404 Not Found
+When: Endpoint or resource not found (any HTTP method)
+Handle: Check endpoint and test data
+
+405 Method Not Allowed
+When: Wrong HTTP method used (any HTTP method)
+Handle: Fix request method
+
+406 Not Acceptable
+When: Server cannot return requested format because a mismatch in the Accept header. (any HTTP method)
+Handle: Fix Accept header
+
+409 Conflict
+When: Duplicate resource or state conflict (mostly with write operations like POST/PUT/PATCH/DELETE)
+Handle: Clean test data
+
+415 Unsupported Media Type
+When: Wrong or missing Content-Type (mostly with POST/PUT/PATCH)
+Handle: Set correct Content-Type header
+
+422 Unprocessable Entity
+When: Semantic/business validation fails like age below minimum allowed(mostly with POST/PUT/PATCH)
+Handle: Assert validation errors
+
+429 Too Many Requests
+When: Rate limit exceeded
+Handle: Retry the request after waiting, increasing the wait time each retry
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+500 Internal Server Error
+When: Server side issues like NullPointerException or unhandled exception (any HTTP method)
+Handle: Log and raise backend defect
+
+501 Not Implemented
+When: Endpoint/method not supported/implemented (any HTTP method)
+Handle: Skip test or raise clarification
+
+502 Bad Gateway
+When: Upstream service failure (any HTTP method)
+Handle: Retry and report infra issue
+
+503 Service Unavailable
+When: Server down or maintenance (any HTTP method)
+Handle: Retry or skip tests
+
+504 Gateway Timeout
+When: Backend response timeout (any HTTP method)
+Handle: Increase timeout and report performance issue
