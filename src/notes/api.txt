@@ -197,6 +197,7 @@ generic methods post .extract()
 8. .path("id")- Extracts data from the response for reuse.
 9. .jsonPath().getString("name")- Returns a JsonPath object for complex JSON extraction
 10..xmlPath().getString("user.id")- Returns an XmlPath object for XML response parsing
+11. .response()
 
 
 
