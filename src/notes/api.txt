@@ -114,13 +114,89 @@ response.get();
 here AtomicReference is used for thread safety and o remove the restriction that lambda variables must be final
 here Awaility waits until API returns valid and non-empty response. If condition becomes true earlier, code exits and if timeout happens, it throws exception
 
+---------------------------------------------------------XXXXXXX-----------------------------------------------------------------------------------
+
+.queryParam() — single parameter
+Ex: given().queryParam("page", 1).queryParam("size", 10)
+
+.queryParams() — multiple parameters at once
+Ex: given().queryParams("page", 1, "size", 10)
+
+-------------------------------------------------------------------
+
+.header() — single header
+Ex: given().header("Authorization", "Bearer token123")
+
+.headers() — multiple headers
+Ex: given().headers(
+        "Authorization", "Bearer token123",
+        "Content-Type", "application/json")
+------------------------------------------------------------------
+
+.pathParam() — single path parameter
+Ex: given().pathParam("userId", 10)
+
+.pathParams() — multiple path parameters
+Ex: given().pathParams("userId", 10, "orderId", 99)
+Or: Map<String, Object> params = new HashMap<>();
+params.put("userId", 10);
+params.put("orderId", 99);
+
+given().pathParams(params)
+-----------------------------------------------------------------
+
+.formParam() — single form field
+Ex: given().contentType(ContentType.URLENC).formParam("username", "admin")
+
+.formParams() — multiple form fields
+Ex: given().contentType(ContentType.URLENC).formParams(
+        "username", "admin",
+        "password", "secret")
+
+-----------------------------------------------------------------
+.multiPart() — single part
+Ex: given().multiPart("file", new File("test.pdf"))
+
+.multiParts() — multiple parts at once
+Ex: given().multiParts(
+        multiPart("file1", new File("a.pdf")),
+        multiPart("file2", new File("b.pdf")),
+        multiPart("category", "docs"))
 
 
+Note:
+1. param() → Generic parameter method; REST Assured decides whether it becomes a query or form parameter based on request context. Do not use if type is known.
+2. queryParam() → Sends parameters explicitly in the URL query string (?key=value).
+3. pathParam() → Replaces placeholders in the URL path (e.g., /users/{id}).
+4. formParam() → Sends parameters in the request body as form data (application/x-www-form-urlencoded).
 
+generic methods post .then()
+------------------------------------------
+1. .statusCode(200)- Asserts the HTTP status code.
+2. .statusLine("HTTP/1.1 200 OK")- Asserts the complete HTTP status line.
+3. .header("Content-Type", "application/json")- Asserts a single response header.
+4. .headers("Content-Type", "application/json")- Asserts multiple response headers at once.
+5. .contentType(ContentType.JSON)- Asserts the response Content-Type.
+6. .body("id", equalTo(10))- Asserts values inside the response body.
+7. .time(lessThan(2000L))- Asserts response time.
+8. .log().all()- Logs request or response details.
+9. .assertThat().statusCode(200)- Improves readability before assertions (syntactic sugar)
+10. .extract().path("id")- Extracts data from the response for reuse.
 
+Note: all status, status line, header(s), body, contentType, time validations can also be done post .assertThat() instead of .then() with exactly same method names and it just improve human redability
 
-
-
+generic methods post .extract()
+------------------------------------------
+1. .statusCode()- Extracts the HTTP status code as an integer.
+2. .statusLine()- Extracts the complete HTTP status line.
+3. .header("Content-Type")- Extracts a single response header.
+4.  Headers headers = response.then().extract().headers();- Extracts all response headers.
+5. .contentType()- Extracts the response Content-Type.
+6. .body().asString()- Extracts the full response body as a ResponseBody object
+7. .time()- Extracts response time.
+8. .path("id")- Extracts data from the response for reuse.
+9. .jsonPath().getString("name")- Returns a JsonPath object for complex JSON extraction
+10..xmlPath().getString("user.id")- Returns an XmlPath object for XML response parsing
 
 
 
