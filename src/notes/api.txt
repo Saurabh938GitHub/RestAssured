@@ -89,7 +89,7 @@ String response= given().log().all().header("Content-Type", "application/json").
 
 -- RequestSpecBuilder: This class is used to write common part in Rest Request and can be used for avoiding to write common parts of API request multiple times.
 RequestSpecification req=new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com/")
-		.addQueryParam("key", "qaclick123")
+		.addQueryParam("key", "qaclick123").addHeader("Authorization", "Bearer "+"token")
 		.setContentType(ContentType.JSON).build();
 		
 RequestSpecification req1= given().spec(req);
