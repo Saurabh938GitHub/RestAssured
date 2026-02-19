@@ -1,0 +1,33 @@
+extract values from response
+---------------------------------------
+let token = pm.response.json().access_token;
+
+store variable and use it
+---------------------------------------
+let token = pm.response.json().access_token;
+pm.environment/globals.set("token", token);
+Authorization: Bearer {{token}}
+
+
+
+
+
+
+status code validation
+---------------------------------------
+pm.test("Status is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+response time validation
+---------------------------------------
+pm.test("Response time < 2000ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(2000);
+});
+
+response time validation
+---------------------------------------
+pm.test("Validate name", function () {
+    let json = pm.response.json();
+    pm.expect(json.name).to.eql("Saurabh");
+});
